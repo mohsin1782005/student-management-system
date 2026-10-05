@@ -1,8 +1,9 @@
-package com.bootcamp.service;
+package com.ase.service;
 
-import com.bootcamp.model.Student;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.ase.model.Student;
 
 public class StudentService {
     private List<Student> students = new ArrayList<>();

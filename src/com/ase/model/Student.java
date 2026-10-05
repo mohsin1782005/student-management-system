@@ -1,4 +1,4 @@
-package com.bootcamp.model;
+package com.ase.model;
 
 import java.util.ArrayList;
 import java.util.List;

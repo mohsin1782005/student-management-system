@@ -1,9 +1,10 @@
-package com.bootcamp;
+package com.ase;
 
-import com.bootcamp.model.Student;
-import com.bootcamp.service.StudentService;
 import java.util.List;
 import java.util.Scanner;
+
+import com.ase.model.Student;
+import com.ase.service.StudentService;
 
 public class Main {
     private static StudentService service = new StudentService();
