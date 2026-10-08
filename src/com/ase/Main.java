@@ -44,6 +44,9 @@ public class Main {
                 case 4:
                     System.out.println("Average GPA: " + service.calculateAverageGpa());
                     break;
+                case 5:
+                    deleteStudentUI(scanner);
+                    break;
                 case 9:
                     runCustomTeamModule(scanner);
                     break;
@@ -64,6 +67,7 @@ public class Main {
         System.out.println("2. Add New Student");
         System.out.println("3. Find Student by ID (Buggy)");
         System.out.println("4. Display Class GPA Average (Buggy)");
+        System.out.println("5. Delete Student");
         System.out.println("9. Custom Team Module ");
         System.out.println("0. Exit");
     }
@@ -93,7 +97,13 @@ public class Main {
         String email = scanner.nextLine();
         
         System.out.print("Enter GPA: ");
-        double gpa = Double.parseDouble(scanner.nextLine());
+        double gpa;
+        try {
+            gpa = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a Float or integer e.g 3 or 3.00");
+            return;
+        }
 
         service.addStudent(new Student(id, name, email, gpa));
         System.out.println("Student added successfully!");
@@ -106,6 +116,17 @@ public class Main {
         Student result = service.findStudentById(id);
         if (result != null) {
             result.printInfo();
+        } else {
+            System.out.println("Student not found.");
+        }
+    }
+
+    private static void deleteStudentUI(Scanner scanner) {
+        System.out.print("Enter Student ID to Delete: ");
+        String id = scanner.nextLine();
+
+        if (service.deleteStudent(id)) {
+            System.out.println("Student deleted successfully!");
         } else {
             System.out.println("Student not found.");
         }

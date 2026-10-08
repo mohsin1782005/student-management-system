@@ -18,6 +18,27 @@ public class StudentService {
         students.add(s);
     }
 
+    /**
+     * Deletes the student with the specified ID.
+     *
+     * @param id the student ID to delete
+     * @return true if a student was deleted; false if the ID is unknown or null
+     */
+    public boolean deleteStudent(String id) {
+        if (id == null) {
+            return false;
+        }
+
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            if (student != null && student.id != null && student.id.equalsIgnoreCase(id)) {
+                students.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Student> getAllStudents() {
         return students;
     }
